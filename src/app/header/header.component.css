@@ -1,0 +1,11 @@
+.heading {
+  font-size: 50px;
+  font-weight: bold;
+}
+.tag {
+  font-size: 40px;
+}
+.mandatory {
+  font-size: 20px;
+  color: red;
+}

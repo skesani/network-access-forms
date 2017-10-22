@@ -1,4 +1,15 @@
-<h1>Angular 4: Reactive forms(Nested forms)</h1>
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <app-networkaccess></app-networkaccess>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <h1>Angular 4: Reactive forms(Nested forms)</h1>
 <form [formGroup]="myForm" (ngSubmit)="register(myForm)" novalidate>
   <p> Is "myForm" valid? {{myForm.valid}} </p>
 
@@ -17,7 +28,7 @@
   <div formGroupName="location">
     <h3>Location</h3>
     <div>
-      <label>Country</label>
+      <label>Country <span style= "color:red">*</span></label>
       <input type="text" name="country" formControlName="country">
       <show-errors [control]="myForm.controls.location.controls.country"></show-errors>
     </div>
@@ -25,7 +36,6 @@
       <label>City</label>
       <input type="text" name="city" formControlName="city">
     </div>
-
     <show-errors [control]="myForm.controls.location"></show-errors>
   </div>
 
@@ -51,3 +61,4 @@
   <button type="submit" [disabled]="myForm.invalid || myForm.pending">Register</button>
   <button type="button" (click)="printMyForm()">Print to console</button>
 </form>
+ -->
