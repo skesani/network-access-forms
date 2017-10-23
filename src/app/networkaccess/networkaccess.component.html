@@ -89,13 +89,14 @@ Todays date:    <input type="date">
     <div class="row">
       <div class="col-md-4">
         <div class="col-md-3">
-          <label class="info" style="display: inline">Job Title</label></div>
-        <div class="col-md-1"><select>
+          <p class="info" style="display: inline">Job Title</p></div>
+        <div class="col-md-1"><label><select>
           <option
             *ngFor="let role of jobtitle">
             {{ role.title }}
           </option>
-        </select></div>
+        </select></label>
+        </div>
       </div>
       <div class="col-md-8">
         <label class="info">Department:</label><input type="text" name="dept"><br>
@@ -205,8 +206,101 @@ Todays date:    <input type="date">
       </label>
     </div>
   </div>
+  <div class="row">
+    <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+    <div class="col-md-12">
+      <textarea style="width: 50%"></textarea></div>
+  </div>
   <hr>
-
+  <div class="row">
+    <div class="col-md-8">
+      <label style="display: inline;">EHR ACCESS (If different from what’s granted by job title.)</label>
+    </div>
+    <div class="col-md-4">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">N/A
+      </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">VU Centricity
+      </label><label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+        <input type="checkbox" name="access">Change Access
+      </label><label class="checkbox-inline">
+        <input type="checkbox" name="access">Remove Access
+      </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Centricity Training
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Change Access
+    </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Remove Access
+    </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">ROA
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Change Access
+    </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Remove Access
+    </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Blanchet
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Change Access
+    </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Remove Access
+    </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <label class="info col-md-4" style="display: inline;">Access the same as what existing user:</label>
+    <input type="text">
+  </div>
+  <hr>
+  <div class="row">
+    <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+    <div class="col-md-12">
+      <textarea style="width: 50%"></textarea></div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <h1>IT Dept Use Only</h1>
+    </div>
+    <div class="col-md-3" style="display: inline;">
+    <label >Completed by:</label>job
+    <input type="text">
+    </div>
+    <div class="col-md-3" style="display: inline;">
+    <label >Date:</label>
+    <input type="date">
+    </div>
+    <div class="col-md-3" style="display: inline;">
+    <label >Username:</label>
+    <input type="text">
+    </div>
+  </div>
 
 </form>
 
