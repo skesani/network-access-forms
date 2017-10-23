@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { FormGroup } from '@angular/forms';
 import { Jobtitle } from '../shared/jobtitle.model';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-networkaccess',
@@ -54,7 +55,6 @@ export class NetworkaccessComponent implements OnInit {
    }
 
   ngOnInit() {
-
 
   }
 
