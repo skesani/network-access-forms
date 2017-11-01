@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormArray} from '@angular/forms';
 import { Jobtitle } from '../shared/jobtitle.model';
 import { EmpType } from '../shared/emptype.model';
 import {EmpOption} from '../shared/empoption.model';
@@ -15,10 +15,7 @@ export class UpdatedformComponent implements OnInit {
   empType: Array<Object> = [{empTypeVal: 'Employee'}, {empTypeVal: 'Contractor'}, {empTypeVal: 'Temporary'}];
   empOptions = ['New', 'Existing'];
   empVal: any;
-  // empoption: ['New', 'Existing'];
- /* // typeRole = ['Employee', 'Contractor', 'Temporary'];
-  // empType= ['New', 'Existing'];
-  // yesNo = ['Yes', 'No'];*/
+
   constructor() {
     this.jobtitle = [
       {title: '*Choose One*'},
@@ -64,6 +61,7 @@ export class UpdatedformComponent implements OnInit {
 
   ngOnInit() {
     this.networkaccessForm = new FormGroup({
+      'emailgroups': new FormArray([])
     });
     this.empVal = 'Employee';
   }
@@ -72,5 +70,9 @@ export class UpdatedformComponent implements OnInit {
   }
   toNumber() {
     console.log(this.empVal);
+  }
+  onAddDrive() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.networkaccessForm.get('emailgroups')).push(control);
   }
 }

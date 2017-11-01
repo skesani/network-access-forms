@@ -1,17 +1,5 @@
 Todays date:    <input type="date">
 <form [formGroup]="networkaccessForm" (ngsubmit)="onSubmit()">
-  <!--<div class="form-group">
-    <div class="container-fluid">
-      <div class="row">
-        <h1>Employee/Contractor information:</h1>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          Please select the type of employee:
-        </div>
-      </div>
-    </div>
-  </div>-->
 <div class="container">
     <div class="row">
         <h1>Employee/Contractor Information:</h1>
@@ -19,14 +7,7 @@ Todays date:    <input type="date">
     <div class="row">
       <div class="col-md-5">
         <label style="display: inline">Select the type of employee:</label>
-      <label><!--<select class="form-control">
-          <option
-            name="etype"
-            formControlName=""
-            *ngFor="let emp1 of empType">
-            {{ emp1 }}
-          </option>ß
-        </select>-->
+      <label>
         <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="empVal" (ngModelChange)="toNumber()">
           <option *ngFor="let emp of empType" [ngValue]="emp.empTypeVal">{{emp.empTypeVal}}</option>
         </select>
@@ -65,36 +46,25 @@ Todays date:    <input type="date">
     </label>
   </div>
   <div class="row">
-    <div class="col-md-6">
-      &nbsp;<!--<label class="radio-inline">
-      <input type="radio" name="baaSignedTemp">Full-time
-    </label>
-      <label class="radio-inline">
-        <input type="radio" name="baaSignedTemp">Part-time
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="baaSignedTemp">PRN
-      </label>-->
-    </div>
   </div>
-  <hr>
+
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-sm-4">
       <label class="info">First Name:
       </label><input type="text" name="fname">
     </div>
-    <div class="col-md-4">
+    <div class="col-sm-4">
       <label class="info">Last Name:
       </label><input type="text" name="lname">
     </div>
-    <div class="col-md-4">
+    <div class="col-sm-4">
       <label class="info">MI:
       </label><input type="text" name="mname">
     </div>
   </div>
-    <hr>
+
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-sm-4">
         <label style="display: inline">Job Title</label>
         <label><select>
           <option
@@ -103,44 +73,46 @@ Todays date:    <input type="date">
           </option>
         </select></label>
       </div>
-      <div class="col-md-8">
+      <div class="col-sm-8">
         <label class="info">Department:</label><input type="text" name="dept"><br>
         <label class="info">Direct Supervisor:</label><input type="text" name="dsupervisor"><br>
-        <label class="info">Contractor Company:</label><input type="text" name="company"><br>
+        <label class="info" *ngIf="empVal !== 'Employee'">Contractor Company:</label><input *ngIf="empVal !== 'Employee'" type="text" name="company"><br>
       </div>
     </div>
 
-  <hr>
+
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <label> Requested due date:</label>
       <input type="date" name="startdate">
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <label style="display: inline">Contractor/Teomporary end date(if not it will be set for one year):</label>
       <input type="date" name="enddate">
     </div>
   </div>
   <hr>
+
   <div class="row">
-    <div class="col-md-8">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label name="security">Security and Email:</label>
+    <div class="col-sm-8">
+      <h1>Security and Email:</h1>
     </div>
-    <div class="col-md-4">
+    <div class="col-sm-4">
       <div class="checkbox">
         <input type="checkbox" value="">N/A
       </div>
     </div>
   </div>
+
   <div class="row">
-    <div class="col-md-12">
-      <label class="info" style="display:inline;">Contractor contact email address:</label>
+    <div class="col-sm-12">
+      <label STYLE="display: inline">Contractor contact email address:</label>
       <input type="text" name="contractor">
     </div>
   </div>
-  <hr>
+
   <div class="row">
     <div class="col-md-12">
       <label class="radio-inline">
@@ -154,7 +126,6 @@ Todays date:    <input type="date">
       </label>
     </div>
   </div>
-  <hr>
   <div class="row">
     <div class="col-md-12">
       <label class="checkbox-inline">
@@ -174,22 +145,31 @@ Todays date:    <input type="date">
       <input type="text" name="existing">
     </div>
   </div>
-  <hr>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <label>Email Groups:</label>
-      <input type="text" name="egroup">
+      <input type="text" >
     </div>
-    <div class="col-md-6">
+    <!--<div class="col-md-2" formArrayName="drives">
+      <button class="btn btn-default" (click)="onAddDrive()">+</button>
+      <div class="form-group"
+           *ngFor="let drivecontrol of networkaccessForm.get('drives').controls;let i = index">
+
+        <input type="text" class="form-control" [formControlName]="i">
+      </div>
+    </div>-->
+    <div class="col-md-5">
       <label class="radio-inline">
-        <input type="radio" name="access">Add
+        <input type="radio" >Add
       </label>
       <label class="radio-inline">
-        <input type="radio" name="access">Remove
+        <input type="radio">Remove
       </label>
     </div>
-  </div>
-  <hr>
+    <div class="col-sm-2" style="display: inline" >
+      <button  (click)="onAddDrive()">+</button>
+    </div>
+        </div>
   <div class="row">
     <div class="col-md-3">
       <label style="display: inline">Drive:</label>
@@ -216,7 +196,7 @@ Todays date:    <input type="date">
     <div class="col-md-12">
       <textarea style="width: 50%"></textarea></div>
   </div>
-  <hr>
+<hr>
   <div class="row">
     <div class="col-md-8">
       <label style="display: inline;">EHR ACCESS (If different from what’s granted by job title.)</label>
@@ -227,7 +207,7 @@ Todays date:    <input type="date">
       </label>
     </div>
   </div>
-  <hr>
+
   <div class="row">
     <div class="col-lg-3">
       <label class="checkbox-inline">
@@ -294,7 +274,7 @@ Todays date:    <input type="date">
       <h1>IT Dept Use Only</h1>
     </div>
     <div class="col-md-3" style="display: inline;">
-      <label >Completed by:</label>job
+      <label >Completed by:</label>
       <input type="text">
     </div>
     <div class="col-md-3" style="display: inline;">
