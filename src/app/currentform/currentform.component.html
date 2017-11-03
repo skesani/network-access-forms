@@ -1,0 +1,22 @@
+Todays date:    <input type="date">
+<form>
+  <div class="container-fluid">
+    <div class=" row col-sm-12" style="background: lightgrey;">
+      <h1>Employee/Contractor Information:</h1>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+    <div class="col-sm-4" style="display: inline;"><label>Employment:</label></div>
+    <div class="col-sm-4">
+      <label >
+        <select class="form-control" ngModel name="empType" [ngModelOptions]="{standalone: true}" [(ngModel)]="empVal" (ngModelChange)="toNumber()">
+          <option *ngFor="let emp of empType" [ngValue]="emp.empTypeVal">{{emp.empTypeVal}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="col-sm-4"></div>
+    </div>
+  </div>
+</form>

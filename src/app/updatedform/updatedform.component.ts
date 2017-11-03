@@ -14,6 +14,8 @@ export class UpdatedformComponent implements OnInit {
   // empType: EmpType[] = [{empTypeVal: 'Employee'}, {empTypeVal: 'Contractor'}, {empTypeVal: 'Temporary'}];
   empType: Array<Object> = [{empTypeVal: 'Employee'}, {empTypeVal: 'Contractor'}, {empTypeVal: 'Temporary'}];
   empOptions = ['New', 'Existing'];
+  access = ['Read-Only', 'Modify', 'Full-Access', 'Remove Access'];
+  ehrAccess = ['Grant Access', 'Change Access', 'RemoveAccess'];
   empVal: any;
 
   constructor() {
@@ -61,7 +63,8 @@ export class UpdatedformComponent implements OnInit {
 
   ngOnInit() {
     this.networkaccessForm = new FormGroup({
-      'emailgroups': new FormArray([])
+      'emailGroup': new FormArray([]),
+      'drives': new FormArray([])
     });
     this.empVal = 'Employee';
   }
@@ -71,8 +74,12 @@ export class UpdatedformComponent implements OnInit {
   toNumber() {
     console.log(this.empVal);
   }
-  onAddDrive() {
+  onAddEmailGroup() {
     const control = new FormControl(null, Validators.required);
-    (<FormArray>this.networkaccessForm.get('emailgroups')).push(control);
+    (<FormArray>this.networkaccessForm.get('emailGroup')).push(control);
+  }
+  onAddButton() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.networkaccessForm.get('drives')).push(control);
   }
 }

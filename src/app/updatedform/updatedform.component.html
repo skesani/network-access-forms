@@ -146,18 +146,10 @@ Todays date:    <input type="date">
     </div>
   </div>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5" >
       <label>Email Groups:</label>
       <input type="text" >
     </div>
-    <!--<div class="col-md-2" formArrayName="drives">
-      <button class="btn btn-default" (click)="onAddDrive()">+</button>
-      <div class="form-group"
-           *ngFor="let drivecontrol of networkaccessForm.get('drives').controls;let i = index">
-
-        <input type="text" class="form-control" [formControlName]="i">
-      </div>
-    </div>-->
     <div class="col-md-5">
       <label class="radio-inline">
         <input type="radio" >Add
@@ -166,35 +158,40 @@ Todays date:    <input type="date">
         <input type="radio">Remove
       </label>
     </div>
-    <div class="col-sm-2" style="display: inline" >
-      <button  (click)="onAddDrive()">+</button>
+    <div class="col-sm-2" formArrayName="emailGroup">
+      <button class="btn-default" type="button" (click)="onAddEmailGroup()">Add Email Groups</button>
+      <div class="form-group" *ngFor="let emailGroupControl of networkaccessForm.get('emailGroup').controls; let i = index ">
+<input type="text" class="form-control" [formControlName]="i">
+
+
+      </div>
     </div>
-        </div>
+ </div>
   <div class="row">
     <div class="col-md-3">
       <label style="display: inline">Drive:</label>
       <input type="text" name="drive">
     </div>
-    <div class="col-md-9">
-      <label>Access:</label>
-      <label class="radio-inline">
-        <input type="radio" name="access">Read-only
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="access">Modify
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="access">Full Access
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="access">Remove Access
-      </label>
+    <div class="col-md-3">
+      <label style="display: inline">Access:
+      <select>
+        <option *ngFor="let a of access">
+          {{ a }}
+        </option>
+      </select></label>
     </div>
+<div class="col-md-6" formArrayName="drives">
+  <button class="btn btn-default" type="button" (click)="onAddButton()">Add Drive</button>
+  <div class="form-group" *ngFor="let drivesControl of networkaccessForm.get('drives').controls; let i = index">
+    <input type="text" class="form-control" [formControlName]="i">
+  </div>
+</div>
+
   </div>
   <div class="row">
     <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
     <div class="col-md-12">
-      <textarea style="width: 50%"></textarea></div>
+      <textarea style="width: 100%"></textarea></div>
   </div>
 <hr>
   <div class="row">
@@ -212,61 +209,62 @@ Todays date:    <input type="date">
     <div class="col-lg-3">
       <label class="checkbox-inline">
         <input type="checkbox" name="access">VU Centricity
-      </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Grant Access
-    </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Change Access
-    </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Remove Access
-    </label>
+      </label>
+      <label>
+        <select>
+          <option *ngFor="let cppaccess of access">
+            {{ cppaccess }}
+          </option>
+        </select>
+      </label>
     </div>
     <div class="col-lg-3">
       <label class="checkbox-inline">
         <input type="checkbox" name="access">Centricity Training
       </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="access">Grant Access
-      </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Change Access
-    </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Remove Access
+      <label>
+      <select>
+        <option *ngFor="let cptaccess of access">
+          {{ cptaccess }}
+        </option>
+      </select>
     </label>
     </div>
     <div class="col-lg-3">
       <label class="checkbox-inline">
         <input type="checkbox" name="access">ROA
       </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="access">Grant Access
-      </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Change Access
-    </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Remove Access
-    </label>
+      <label>
+        <select>
+          <option *ngFor="let roaaccess of access">
+            {{ roaaccess }}
+          </option>
+        </select>
+      </label>
     </div>
     <div class="col-lg-3">
       <label class="checkbox-inline">
         <input type="checkbox" name="access">Blanchet
       </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="access">Grant Access
-      </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Change Access
-    </label><label class="checkbox-inline">
-      <input type="checkbox" name="access">Remove Access
-    </label>
+      <label>
+        <select>
+          <option *ngFor="let baccess of access">
+            {{ baccess }}
+          </option>
+        </select>
+      </label>
     </div>
   </div>
-  <hr>
+
   <div class="row">
     <label class="info col-md-4" style="display: inline;">Access the same as what existing user:</label>
     <input type="text">
   </div>
-  <hr>
+
   <div class="row">
     <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
     <div class="col-md-12">
-      <textarea style="width: 50%"></textarea></div>
+      <textarea style="width: 100%"></textarea></div>
   </div>
   <hr>
   <div class="row">
