@@ -10,11 +10,12 @@ import { AppComponent } from './app.component';
 import { NetworkaccessComponent } from './networkaccess/networkaccess.component';
 import { HeaderComponent } from './header/header.component';
 import { UpdatedformComponent } from './updatedform/updatedform.component';
-import { CurrentformComponent } from './currentform/currentform.component';
+import { CuurentformComponent } from './cuurentform/cuurentform.component';
+
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpModule],
-  declarations: [AppComponent, ShowErrorsComponent, NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CurrentformComponent],
+  declarations: [AppComponent, ShowErrorsComponent, NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
