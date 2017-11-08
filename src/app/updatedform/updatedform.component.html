@@ -21,6 +21,17 @@ Todays date:    <input type="date">
         </div>
       </div>
     </div>
+
+  <div class="row">
+    <div class="col-md-5">
+        <label style="display: inline">State:</label>
+        <label>
+          <select class="form-control" formControlName="state">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+          </select>
+        </label>
+    </div>
+  </div>
   </div>
   <div class="row" *ngIf="empVal !== 'Employee'">
     <div class="col-sm-6">
@@ -287,3 +298,4 @@ Todays date:    <input type="date">
 
 </form>
 
+<p>networkaccessForm value: {{ networkaccessForm.value | json}}</p>
