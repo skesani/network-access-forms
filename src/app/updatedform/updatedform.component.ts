@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators, FormArray} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormArray, FormBuilder} from '@angular/forms';
 import { Jobtitle } from '../shared/jobtitle.model';
 import { EmpType } from '../shared/emptype.model';
 import {EmpOption} from '../shared/empoption.model';
@@ -18,7 +18,9 @@ export class UpdatedformComponent implements OnInit {
   ehrAccess = ['Grant Access', 'Change Access', 'RemoveAccess'];
   empVal: any;
 
-  constructor() {
+  states = ['CA', 'MD', 'OH', 'VA', 'DC', 'NY'];
+
+  constructor(private fb: FormBuilder) {
     this.jobtitle = [
       {title: '*Choose One*'},
       {title: 'Admin - Accountant'},
@@ -57,15 +59,30 @@ export class UpdatedformComponent implements OnInit {
       {title: 'Scheduler - Office'},
       {title: 'Urologist'}
     ];
-
+    this.createForm();
 
   }
 
+  createForm() {
+    this.networkaccessForm = this.fb.group({ // <-- the parent FormGroup
+     /* name: ['', Validators.required ],*/
+      /*address: this.fb.group({ // <-- the child FormGroup
+        street: '',
+        city: '',
+        state: '',
+        zip: ''
+      }),*/
+      state: '',
+      emailGroup: new FormArray([]),
+      drives: new FormArray([])
+    });
+  }
+
   ngOnInit() {
-    this.networkaccessForm = new FormGroup({
+    /*this.networkaccessForm = new FormGroup({
       'emailGroup': new FormArray([]),
       'drives': new FormArray([])
-    });
+    });*/
     this.empVal = 'Employee';
   }
   onSubmit() {

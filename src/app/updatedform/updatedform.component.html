@@ -21,7 +21,24 @@ Todays date:    <input type="date">
         </div>
       </div>
     </div>
+
+  <div class="row">
+    <div class="col-md-5">
+        <label style="display: inline">State:</label>
+        <label>
+          <select class="form-control" formControlName="state">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+          </select>
+        </label>
+    </div>
   </div>
+  </div>
+
+  <div class="row" *ngIf="networkaccessForm.value.state === 'DC'">
+    <p style="color: #007dc1">Yahoo! DC State :)</p>
+    <img style="width: 60%; padding: 50px;" src="http://www.hiltongrandvacations.com/washington-dc/img/banner01.jpg">
+  </div>
+
   <div class="row" *ngIf="empVal !== 'Employee'">
     <div class="col-sm-6">
       <label style="display: inline">&nbsp;For temporary and contractors: Is there a BAA/Confidentiality signed?</label>
@@ -287,3 +304,4 @@ Todays date:    <input type="date">
 
 </form>
 
+<p>networkaccessForm value: {{ networkaccessForm.value | json}}</p>
