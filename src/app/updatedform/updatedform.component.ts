@@ -3,13 +3,22 @@ import {FormControl, FormGroup, Validators, FormArray, FormBuilder} from '@angul
 import { Jobtitle } from '../shared/jobtitle.model';
 import { EmpType } from '../shared/emptype.model';
 import {EmpOption} from '../shared/empoption.model';
+import {Address, Email} from './customer.interface';
 @Component({
   selector: 'app-updatedform',
   templateUrl: './updatedform.component.html',
   styleUrls: ['./updatedform.component.css']
 })
 export class UpdatedformComponent implements OnInit {
-  networkaccessForm: FormGroup;
+
+  public networkaccessForm: FormGroup;
+
+  addresses: Address[];
+
+  emailGroup: Email[];
+
+
+
   jobtitle: Jobtitle[];
   // empType: EmpType[] = [{empTypeVal: 'Employee'}, {empTypeVal: 'Contractor'}, {empTypeVal: 'Temporary'}];
   empType: Array<Object> = [{empTypeVal: 'Employee'}, {empTypeVal: 'Contractor'}, {empTypeVal: 'Temporary'}];
@@ -73,7 +82,7 @@ export class UpdatedformComponent implements OnInit {
         zip: ''
       }),*/
       state: '',
-      emailGroup: new FormArray([]),
+     /* emailGroup: new FormArray([]),*/
       drives: new FormArray([])
     });
   }
@@ -83,6 +92,19 @@ export class UpdatedformComponent implements OnInit {
       'emailGroup': new FormArray([]),
       'drives': new FormArray([])
     });*/
+
+    this.networkaccessForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      addresses: this.fb.array([
+        this.initAddress(),
+      ]),
+
+      emailGroup: this.fb.array([
+        this.initEmail(),
+      ])
+
+    });
+
     this.empVal = 'Employee';
   }
   onSubmit() {
@@ -91,12 +113,44 @@ export class UpdatedformComponent implements OnInit {
   toNumber() {
     console.log(this.empVal);
   }
+
   onAddEmailGroup() {
-    const control = new FormControl(null, Validators.required);
-    (<FormArray>this.networkaccessForm.get('emailGroup')).push(control);
+    const control = <FormArray>this.networkaccessForm.controls['emailGroup'];
+    control.push(this.initEmail());
+
   }
   onAddButton() {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.networkaccessForm.get('drives')).push(control);
   }
+
+  initAddress() {
+    return this.fb.group({
+      street: ['', Validators.required],
+      postcode: ['']
+    });
+  }
+
+  initEmail() {
+    return this.fb.group({
+      email: ['', Validators.required],
+    });
+  }
+
+  addAddress() {
+    const control = <FormArray>this.networkaccessForm.controls['addresses'];
+    control.push(this.initAddress());
+  }
+
+  removeAddress(i: number) {
+    const control = <FormArray>this.networkaccessForm.controls['addresses'];
+    control.removeAt(i);
+  }
+
+  removeEmail(i: number) {
+    const control = <FormArray>this.networkaccessForm.controls['emailGroup'];
+    control.removeAt(i);
+  }
+
+
 }
