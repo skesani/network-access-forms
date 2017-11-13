@@ -12,7 +12,9 @@ import {HeaderComponent} from './header/header.component';
 import {UpdatedformComponent} from './updatedform/updatedform.component';
 import {CuurentformComponent} from './cuurentform/cuurentform.component';
 import {ReactFormSelectComponent} from './react-form-select/react-form-select.component';
+import {ReactiveapproachComponent} from './reactiveapproach/reactiveapproach.component';
 import {RouterModule} from '@angular/router';
+import { DynamicapproachComponent } from './dynamicapproach/dynamicapproach.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import {RouterModule} from '@angular/router';
     ])
   ],
   declarations: [AppComponent, ShowErrorsComponent,
-    NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent, ReactFormSelectComponent],
+    NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent,
+    ReactFormSelectComponent, ReactiveapproachComponent, DynamicapproachComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

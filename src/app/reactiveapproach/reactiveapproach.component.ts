@@ -24,6 +24,9 @@ export class ReactiveapproachComponent implements OnInit {
   employeeType = ['Full-Time', 'Part-Time', 'PRN'];
   emailGroupAccess = ['Add', 'Remove'];
   typeOfAccess = ['Grant-Access', 'Remove-Access', 'Modify Access'];
+  hardwareVal = ['Laptop', 'Desktop', 'Laptop Bag', 'Dual Monitors', 'Docking Station', 'Wireless Mouse'];
+  softwareVal = ['Adobe Acrobat(Full version)', 'MS Office Standard(Word, Excel, Outlook, PowerPoint)',
+    'Ms Office Pro(Same as standard plus access)', 'Fax Server', 'Attendant Console'];
 
   constructor(private fb: FormBuilder) { }
 
@@ -59,13 +62,50 @@ export class ReactiveapproachComponent implements OnInit {
       'empType': new FormControl(null),
       'reqDate': new FormControl(null),
       'securityEmail': new FormControl(null),
-      'electronicAccess': new FormControl(null)
-
+      'electronicAccess': new FormControl(null),
+      hardwares: this.fb.array([
+        this.initHardwares()]),
+      softwares: this.fb.array([
+        this.initSoftwares()
+      ]),
+      hardwareSoftware: new FormControl(null)
     });
   }
   onSubmit() {
     console.log(this.networkAccess);
     console.log(this.networkAccess.get('employment').value);
   }
+  initHardwares() {
+    // initialize our address
+    return this.fb.group({
+      hardware: new FormControl(null)
+    });
+  }
+  initSoftwares() {
+    return this.fb.group({
+      software: new FormControl(null)
+    });
+  }
 
+  addHardwares() {
+    // add address to the list
+    const control = <FormArray>this.networkAccess.controls['hardwares'];
+    control.push(this.initHardwares());
+  }
+  addSoftwares() {
+    // add address to the list
+    const control = <FormArray>this.networkAccess.controls['softwares'];
+    control.push(this.initSoftwares());
+  }
+
+  removeHardwares(i: number) {
+    // remove address from the list
+    const control = <FormArray>this.networkAccess.controls['hardwares'];
+    control.removeAt(i);
+  }
+  removeSoftwares(i: number) {
+    // remove address from the list
+    const control = <FormArray>this.networkAccess.controls['softwares'];
+    control.removeAt(i);
+  }
 }
