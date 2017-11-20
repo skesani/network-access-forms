@@ -22,11 +22,12 @@ import {DoctorsService} from './doctors-schedule/DoctorsService';
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpModule,
     RouterModule.forRoot([
-        { path: 'select', component: ReactFormSelectComponent}
+        { path: 'select', component: ReactFormSelectComponent},
+        { path: 'doctors', component: DoctorsScheduleComponent}
     ])
   ],
   declarations: [AppComponent, ShowErrorsComponent,
-    NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent,
+    NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent, DoctorsScheduleComponent,
     ReactFormSelectComponent, ReactiveapproachComponent, DynamicapproachComponent],
   bootstrap: [AppComponent],
   providers: [DoctorsService]
