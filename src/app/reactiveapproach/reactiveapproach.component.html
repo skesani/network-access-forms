@@ -1,0 +1,325 @@
+<div class="container">
+  <div class="col-sm-12">
+    <form [formGroup]="networkAccess" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label for="employment">Employment</label>
+          <select
+            id="employment"
+            class="form-control"
+            formControlName="employment">
+            <option [value]="null">Select Category</option>
+            <option *ngFor="let emp of employment">{{ emp }}</option>
+          </select>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="empType">Employee Type:</label>
+          <select
+            id="empType"
+            class="form-control"
+            formControlName="empType">
+            <option [ngValue]="null">Select Type</option>
+            <option
+              *ngFor="let emp of employeeType">
+              {{ emp }}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="reqDate">Requested due date:</label>
+          <input type="date"
+                 id="reqDate"
+                 formControlName="reqDate"
+                 class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 form-group radio">
+          <label *ngFor="let empkind of employmentKind">
+            <input
+              name="empkind"
+              type="radio"
+              id="empkind"
+              formControlName="empkind"
+              [value]="empkind">
+            {{ empkind }}
+          </label>
+        </div>
+      </div>
+      <div class="row form-group" formGroupName="contractorInfo"
+           *ngIf="networkAccess.get('employment').value === 'Contractor' || networkAccess.get('employment').value === 'Temporary'">
+        <div class="row">
+          <div class="col-sm-8 form-group">
+            <label style="display: inline;">For Temporary and Contractors: Is there a BAA/Confidentiality
+              signed?</label>
+          </div>
+          <div class="col-sm-4 form-group radio">
+            <label *ngFor="let baa of yesNo">
+              <input
+                type="radio"
+                id="baa"
+                formControlName="baa"
+                [value]="baa">
+              {{ baa }}
+            </label>
+          </div>
+          <!-- <span
+                 *ngIf="!networkAccess.get('contractorInfo.baa').valid && networkAccess.get('contractorInfo.baa').touched"
+                 class="help-block">Please check Yes or No</span>-->
+        </div>
+        <div class="row col-sm-12 form-group">
+          <label style="display: inline;">Contractor/Temporary end date(if not it will be set for one year):</label>
+          <input type="date"
+                 id="reqContractDate"
+                 formControlName="reqContractDate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label for="fname">First Name:</label>
+          <input type="text"
+                 id="fname"
+                 formControlName="fname"
+                 class="form-control">
+          <span
+            *ngIf="!networkAccess.get('fname').valid && networkAccess.get('fname').touched"
+            class="help-block">Please enter First Name!</span>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="lname">Last Name:</label>
+          <input type="text"
+                 id="lname"
+                 formControlName="lname"
+                 class="form-control">
+          <span
+            *ngIf="!networkAccess.get('lname').valid && networkAccess.get('lname').touched"
+            class="help-block">Please enter Last Name!</span>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="mname">Middle Initial:</label>
+          <input type="text"
+                 id="mname"
+                 formControlName="mname"
+                 class="form-control">
+          <span
+            *ngIf="!networkAccess.get('mname').valid && networkAccess.get('mname').touched"
+            class="help-block">Please enter Middle Initial!</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label for="jobtitle">Job Title:</label>
+          <select
+            id="jobtitle"
+            class="form-control"
+            formControlName="jobtitle">
+            <option
+              *ngFor="let job of jobtitle">
+              {{ job }}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="department">Department:</label>
+          <select
+            id="department"
+            class="form-control"
+            formControlName="department">
+            <option [ngValue]="null">Choose Department</option>
+            <option
+              *ngFor="let dept of department">
+              {{ dept }}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="supervisor">Direct Supervisor:</label>
+          <input type="text"
+                 id="supervisor"
+                 formControlName="supervisor"
+                 class="form-control">
+        </div>
+      </div>
+      <div class="row col-sm-12 form-group">
+        <div class="row col-sm-6 ">
+          <label>Security and Email:</label>
+        </div>
+        <div class="row col-sm-6 ">
+          <label>
+            <input type="checkbox"
+                   formControlName="securityEmail"
+                   id="securityEmail"> N/A
+          </label>
+        </div>
+      </div>
+      <div class="row col-sm-12" formGroupName="securityEmailInfo"
+           *ngIf="networkAccess.get('securityEmail').value !== true">
+        <div class="row form-group ">
+          <div class="col-sm-4 ">
+            <label><input
+              type="checkbox"
+              id="networkAccount"
+              formControlName="networkAccount">&nbsp;&nbsp;NetworkAccount</label><br>
+            <select
+              id="networkAccountAccess"
+              class="form-control"
+              formControlName="networkAccountAccess">
+              <option [ngValue]="null">Select</option>
+              <option
+                *ngFor="let type of typeOfAccess">
+                {{ type }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-4 ">
+            <label><input
+              type="checkbox"
+              id="email"
+              formControlName="email">&nbsp;&nbsp;Email</label>
+            <select
+              id="emailAccess"
+              class="form-control"
+              formControlName="emailAccess">
+              <option [ngValue]="null">Select</option>
+              <option
+                *ngFor="let type1 of typeOfAccess">
+                {{ type1 }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-4 ">
+            <label><input type="checkbox"
+                          id="vpn"
+                          formControlName="vpn">&nbsp;&nbsp;VPN</label>
+            <select
+              id="vpnAccess"
+              class="form-control"
+              formControlName="vpnAccess">
+              <option [ngValue]="null">Select</option>
+              <option
+                *ngFor="let type2 of typeOfAccess">
+                {{ type2 }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-4">
+            <label style="display: inline;">Security/Email similar to what existing user:</label>
+          </div>
+          <div class="col-sm-8">
+            <input type="text"
+                   style="width: 100%"
+                   formControlName="similarUser"
+                   id="similarUser">
+          </div>
+        </div>
+        <div class="row form-group">
+          <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+          <div class="col-md-12">
+            <textarea class="form-control"
+                      style="width: 100%"
+                      formControlName="miscSecurity"
+                      placeholder="Please enter the things you need, which are not specified above"></textarea></div>
+        </div>
+      </div>
+      <div class="row col-sm-12 form-group">
+        <div class="row col-sm-6">
+          <label style="display: inline;">EHR Access(If different from what's granted by job title):</label>
+        </div>
+        <div class="row col-sm-6 ">
+          <label>
+            <input type="checkbox"
+                   formControlName="electronicAccess"
+                   id="electronicAccess"> N/A
+          </label>
+        </div>
+      </div>
+      <div class="row col-sm-12" formGroupName="ehrAccess"
+           *ngIf="networkAccess.get('electronicAccess').value !== true">
+        <div class="row form-group">
+          <div class="col-sm-4">
+            <label style="display: inline;">Access the same as what existing user:</label>
+          </div>
+          <div class="col-sm-8">
+            <input type="text"
+                   style="width: 100%"
+                   formControlName="similarEhrUser"
+                   id="similarEhrUser">
+          </div>
+        </div>
+        <div class="row form-group">
+          <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+          <div class="col-md-12">
+            <textarea class="form-control"
+                      style="width: 100%"
+                      formControlName="miscEhrNeed"
+                      placeholder="Please enter the things you need, which are not specified above"></textarea></div>
+        </div>
+      </div>
+      <div class="row col-sm-12 form-group">
+        <div class="row col-sm-6 ">
+          <label style="display: inline;">Hardware & Software:</label>
+        </div>
+        <div class="row col-sm-6 ">
+          <label>
+            <input type="checkbox"
+                   formControlName="hardwareSoftware"
+                   id="hardwareSoftware"> N/A
+          </label>
+        </div>
+      </div>
+      <div>rams</div>
+      <div formArrayName="hardwares" *ngIf="networkAccess.get('hardwareSoftware').value !== true">
+        <div *ngFor="let address of networkAccess.controls.hardwares.controls; let j=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Hardware: {{j + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right"
+                  *ngIf="networkAccess.controls.hardwares.controls.length > 1" (click)="removeHardwares(j)"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="j">
+            <div class="form-group col-sm-6">
+              <select
+                id="hardwareVal"
+                class="form-control"
+                formControlName="hardware">
+                <option [value]="null">Select Category</option>
+                <option *ngFor="let hw of hardwareVal">{{ hw }}</option>
+              </select>
+            </div>
+            <div class=" col-sm-6">
+              <button type="button" class="btn btn-default" (click)="addHardwares()">Add Hardwares</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div formArrayName="softwares" *ngIf="networkAccess.get('hardwareSoftware').value !== true">
+        <div *ngFor="let address of networkAccess.controls.softwares.controls; let j=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Software: {{j + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right"
+                  *ngIf="networkAccess.controls.softwares.controls.length > 1" (click)="removeSoftwares(j)"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="j">
+            <div class="col-sm-6">
+              <select
+                id="softwareVal"
+                class="form-control"
+                formControlName="software">
+                <option [value]="null">Select Category</option>
+                <option *ngFor="let sw of softwareVal">{{ sw }}</option>
+              </select>
+            </div>
+            <div class=" col-sm-6">
+              <button type="button" class="btn btn-default" (click)="addSoftwares()">Add Softwares</button>
+            </div>
+            <span style="margin-left: 15px;">Please Specify the type of access:<input type="text"> </span>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<p>networkaccessForm value: {{ networkAccess.value | json}}</p>
+<!--*ngFor="let emails of networkAccess.controls.emailGroups.controls; let i=index"-->

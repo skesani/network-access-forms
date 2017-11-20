@@ -1,0 +1,349 @@
+Todays date:    <input type="date">
+<form [formGroup]="myForm" novalidate>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Employee/Contractor Information:</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Employee:
+      </div>
+      <div class="col-md-10">
+        <label class="radio-inline">
+          <input type="radio" name="employee">New
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="employee">Existing
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Contractor:
+      </div>
+      <div class="col-md-10">
+        <label class="radio-inline">
+          <input type="radio" name="contractor">New
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="contractor">Existing
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Temporary:
+      </div>
+      <div class="col-md-10">
+        <label class="radio-inline">
+          <input type="radio" name="temporary">New
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="temporary">Existing
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="info">&nbsp;For temporary and contractors: Is there a BAA/Confidentiality signed?</p>
+    </div>
+    <div class="col-md-6">
+      <label class="radio-inline">
+        <input type="radio" name="baaSigned">Yes
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="baaSigned">No
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      &nbsp;<label class="radio-inline">
+      <input type="radio" name="baaSignedTemp">Full-time
+    </label>
+      <label class="radio-inline">
+        <input type="radio" name="baaSignedTemp">Part-time
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="baaSignedTemp">PRN
+      </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <label class="info">First Name:
+      </label><input type="text" name="fname">
+    </div>
+    <div class="col-md-4">
+      <label class="info">Last Name:
+      </label><input type="text" name="lname">
+    </div>
+    <div class="col-md-4">
+      <label class="info">MI:
+      </label><input type="text" name="mname">
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="col-md-3">
+          <p class="info" style="display: inline">Job Title</p></div>
+        <div class="col-md-1"><label><select>
+          <option
+            *ngFor="let role of jobtitle">
+            {{ role.title }}
+          </option>
+        </select></label>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <label class="info">Department:</label><input type="text" name="dept"><br>
+        <label class="info">Direct Supervisor:</label><input type="text" name="dsupervisor"><br>
+        <label class="info">Contractor Company:</label><input type="text" name="company"><br>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <label> Requested due date:</label>
+      <input type="date" name="startdate">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label style="display: inline">Contractor/Teomporary end date(if not it will be set for one year):</label>
+      <input type="date" name="enddate">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label name="security">Security and Email:</label>
+    </div>
+    <div class="col-md-4">
+      <div class="checkbox">
+        <input type="checkbox" value="">N/A
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label class="info" style="display:inline;">Contractor contact email address:</label>
+      <input type="text" name="contractor">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <label class="radio-inline">
+        <input type="radio" name="access">Grant Access
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Remove Access
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Change Access
+      </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Network Account
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Email
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">VPN Access
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label class="info" style="display: inline">Security/Email similar to which existing user:</label>
+      <input type="text" name="existing">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Email Groups:</label>
+      <input type="text" name="egroup">
+    </div>
+    <div class="col-md-6">
+      <label class="radio-inline">
+        <input type="radio" name="access">Add
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Remove
+      </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-3">
+      <label style="display: inline">Drive:</label>
+      <input type="text" name="drive">
+    </div>
+    <div class="col-md-9">
+      <label>Access:</label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Read-only
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Modify
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Full Access
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Remove Access
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+    <div class="col-md-12">
+      <textarea style="width: 50%"></textarea></div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+      <label style="display: inline;">EHR ACCESS (If different from what’s granted by job title.)</label>
+    </div>
+    <div class="col-md-4">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">N/A
+      </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">VU Centricity
+      </label><label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+        <input type="checkbox" name="access">Change Access
+      </label><label class="checkbox-inline">
+        <input type="checkbox" name="access">Remove Access
+      </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Centricity Training
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Change Access
+    </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Remove Access
+    </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">ROA
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Change Access
+    </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Remove Access
+    </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Blanchet
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Grant Access
+      </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Change Access
+    </label><label class="checkbox-inline">
+      <input type="checkbox" name="access">Remove Access
+    </label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <label class="info col-md-4" style="display: inline;">Access the same as what existing user:</label>
+    <input type="text">
+  </div>
+  <hr>
+  <div class="row">
+    <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+    <div class="col-md-12">
+      <textarea style="width: 50%"></textarea></div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <h1>IT Dept Use Only</h1>
+    </div>
+    <div class="col-md-3" style="display: inline;">
+    <label >Completed by:</label>job
+    <input type="text">
+    </div>
+    <div class="col-md-3" style="display: inline;">
+    <label >Date:</label>
+    <input type="date">
+    </div>
+    <div class="col-md-3" style="display: inline;">
+    <label >Username:</label>
+    <input type="text">
+    </div>
+  </div>
+
+</form>
+
+<!-- <div>
+  <label>Birth Year</label>
+  <input type="text" name="birthYear" formControlName="birthYear">
+  <show-errors [control]="myForm.controls.birthYear"></show-errors>
+</div>
+
+<div formGroupName="location">
+  <h3>Location</h3>
+  <div>
+    <label>Country <span style= "color:red">*</span></label>
+    <input type="text" name="country" formControlName="country">
+    <show-errors [control]="myForm.controls.location.controls.country"></show-errors>
+  </div>
+  <div>
+    <label>City</label>
+    <input type="text" name="city" formControlName="city">
+  </div>
+  <show-errors [control]="myForm.controls.location"></show-errors>
+</div>
+
+<div formArrayName="phoneNumbers">
+  <h3>Phone numbers</h3>
+  <div *ngFor="let phoneNumberControl of myForm.controls.phoneNumbers.controls; let i=index;">
+    <label>Phone number {{i + 1}}</label>
+    <input type="text" name="phoneNumber[{{phoneId}}]" [formControlName]="i">
+    <button type="button" (click)="removePhone(i); myForm.controls.phoneNumbers.markAsTouched()">remove</button>
+    <show-errors [control]="phoneNumberControl"></show-errors>
+  </div>
+  <button type="button" (click)="addPhone(); myForm.controls.phoneNumbers.markAsTouched()">Add phone number</button>
+
+  <show-errors [control]="myForm.controls.phoneNumbers"></show-errors>
+</div>
+<div class="form-group radio">
+  <h4>Gender:</h4>
+  <label class="center-block"><input type="radio" formControlName="gender" value="M">Male</label>
+  <label class="center-block"><input type="radio" formControlName="gender" value="F">Female</label>
+  <show-errors [control]="myForm.controls.gender"></show-errors>
+</div>
+<pre>{{myForm.value | json}}</pre>
+<button type="submit" [disabled]="myForm.invalid || myForm.pending">Register</button>
+<button type="button" (click)="printMyForm()">Print to console</button>
+</form>
+-->

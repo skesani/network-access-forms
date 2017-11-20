@@ -1,0 +1,363 @@
+Todays date:    <input type="date">
+<form [formGroup]="networkaccessForm" (ngsubmit)="onSubmit()">
+<div class="container">
+    <div class="row">
+        <h1>Employee/Contractor Information:</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <label style="display: inline">Select the type of employee:</label>
+      <label>
+        <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="empVal" (ngModelChange)="toNumber()">
+          <option *ngFor="let emp of empType" [ngValue]="emp.empTypeVal">{{emp.empTypeVal}}</option>
+        </select>
+      </label>
+      </div>
+      <div class="col-sm-5">
+        <div class="radio-inline" *ngFor="let eo of empOptions">
+          <label>
+          <input type="radio" name="eo" >{{ eo }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-5">
+        <label style="display: inline">State:</label>
+        <label>
+          <select class="form-control" formControlName="state">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+          </select>
+        </label>
+    </div>
+  </div>
+  </div>
+
+  <div class="row" *ngIf="networkaccessForm.value.state === 'DC'">
+    <p style="color: #007dc1">Yahoo! DC State :)</p>
+    <img style="width: 60%; padding: 50px;" src="http://www.hiltongrandvacations.com/washington-dc/img/banner01.jpg">
+  </div>
+
+  <div class="row" *ngIf="empVal !== 'Employee'">
+    <div class="col-sm-6">
+      <label style="display: inline">&nbsp;For temporary and contractors: Is there a BAA/Confidentiality signed?</label>
+    </div>
+    <div class="col-sm-6">
+      <label class="radio-inline">
+        <input type="radio" name="baaSigned">Yes
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="baaSigned">No
+      </label>
+    </div>
+    &nbsp;&nbsp;
+    <label class="radio-inline">
+      <input type="radio" name="baaSignedTemp">Full-time
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="baaSignedTemp">Part-time
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="baaSignedTemp">PRN
+    </label>
+  </div>
+  <div class="row">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <label class="info">First Name:
+      </label><input type="text" name="fname">
+    </div>
+    <div class="col-sm-4">
+      <label class="info">Last Name:
+      </label><input type="text" name="lname">
+    </div>
+    <div class="col-sm-4">
+      <label class="info">MI:
+      </label><input type="text" name="mname">
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <label style="display: inline">Job Title</label>
+        <label><select>
+          <option
+            *ngFor="let role of jobtitle">
+            {{ role.title }}
+          </option>
+        </select></label>
+      </div>
+      <div class="col-sm-8">
+        <label class="info">Department:</label><input type="text" name="dept"><br>
+        <label class="info">Direct Supervisor:</label><input type="text" name="dsupervisor"><br>
+        <label class="info" *ngIf="empVal !== 'Employee'">Contractor Company:</label><input *ngIf="empVal !== 'Employee'" type="text" name="company"><br>
+      </div>
+    </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <label> Requested due date:</label>
+      <input type="date" name="startdate">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <label style="display: inline">Contractor/Teomporary end date(if not it will be set for one year):</label>
+      <input type="date" name="enddate">
+    </div>
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <h1>Security and Email:</h1>
+    </div>
+    <div class="col-sm-4">
+      <div class="checkbox">
+        <input type="checkbox" value="">N/A
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <label STYLE="display: inline">Contractor contact email address:</label>
+      <input type="text" name="contractor">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <label class="radio-inline">
+        <input type="radio" name="access">Grant Access
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Remove Access
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="access">Change Access
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Network Account
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Email
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">VPN Access
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label class="info" style="display: inline">Security/Email similar to which existing user:</label>
+      <input type="text" name="existing">
+    </div>
+  </div>
+  <!--<div class="row">
+    <div class="col-md-5" >
+      <label>Email Groups:</label>
+      <input type="text" >
+    </div>
+    <div class="col-md-5">
+      <label class="radio-inline">
+        <input type="radio" >Add
+      </label>
+      <label class="radio-inline">
+        <input type="radio">Remove
+      </label>
+    </div>
+    <div class="col-sm-2" formArrayName="emailGroup">
+      <button class="btn-default" type="button" (click)="onAddEmailGroup()">Add Email Groups</button>
+      <div class="form-group" *ngFor="let emailGroupControl of networkaccessForm.get('emailGroup').controls; let i = index ">
+<input type="text" class="form-control" [formControlName]="i">
+
+
+      </div>
+    </div>
+ </div>-->
+  <!--Email-->
+  <div formArrayName="emailGroup">
+    <div *ngFor="let address of networkaccessForm.controls.emailGroup.controls; let j=index" class="panel panel-default">
+      <div class="panel-heading">
+        <span>Email {{j + 1}}</span>
+        <span class="glyphicon glyphicon-remove pull-right" *ngIf="networkaccessForm.controls.emailGroup.controls.length > 1" (click)="removeEmail(j)"></span>
+      </div>
+      <div class="panel-body" [formGroupName]="j">
+        <div class="form-group col-xs-6">
+          <label>street</label>
+          <input type="text" class="form-control" formControlName="email">
+          <small [hidden]="networkaccessForm.controls.emailGroup.controls[j].controls.email.valid" class="text-danger">
+            Email is required
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-20">
+    <a (click)="onAddEmailGroup()" style="cursor: default">
+      Add another Email address +
+    </a>
+  </div>
+
+  <!--<div class="row">
+    <div class="col-md-3">
+      <label style="display: inline">Drive:</label>
+      <input type="text" name="drive">
+    </div>
+    <div class="col-md-3">
+      <label style="display: inline">Access:
+      <select>
+        <option *ngFor="let a of access">
+          {{ a }}
+        </option>
+      </select></label>
+    </div>
+<div class="col-md-6" formArrayName="drives">
+  <button class="btn btn-default" type="button" (click)="onAddButton()">Add Drive</button>
+  <div class="form-group" *ngFor="let drivesControl of networkaccessForm.get('drives').controls; let i = index">
+    <input type="text" class="form-control" [formControlName]="i">
+  </div>
+</div>
+
+  </div>-->
+  <div class="row">
+    <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+    <div class="col-md-12">
+      <textarea style="width: 100%"></textarea></div>
+  </div>
+<hr>
+  <div class="row">
+    <div class="col-md-8">
+      <label style="display: inline;">EHR ACCESS (If different from what’s granted by job title.)</label>
+    </div>
+    <div class="col-md-4">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">N/A
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">VU Centricity
+      </label>
+      <label>
+        <select>
+          <option *ngFor="let cppaccess of access">
+            {{ cppaccess }}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Centricity Training
+      </label>
+      <label>
+      <select>
+        <option *ngFor="let cptaccess of access">
+          {{ cptaccess }}
+        </option>
+      </select>
+    </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">ROA
+      </label>
+      <label>
+        <select>
+          <option *ngFor="let roaaccess of access">
+            {{ roaaccess }}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="col-lg-3">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="access">Blanchet
+      </label>
+      <label>
+        <select>
+          <option *ngFor="let baccess of access">
+            {{ baccess }}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="info col-md-4" style="display: inline;">Access the same as what existing user:</label>
+    <input type="text">
+  </div>
+
+  <div class="row">
+    <label class="col-sm-12">Miscellaneous/Specific Needs: (Enter any other requests)</label>
+    <div class="col-md-12">
+      <textarea style="width: 100%"></textarea></div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <h1>IT Dept Use Only</h1>
+    </div>
+    <div class="col-md-3" style="display: inline;">
+      <label >Completed by:</label>
+      <input type="text">
+    </div>
+    <div class="col-md-3" style="display: inline;">
+      <label >Date:</label>
+      <input type="date">
+    </div>
+    <div class="col-md-3" style="display: inline;">
+      <label >Username:</label>
+      <input type="text">
+    </div>
+  </div>
+
+
+  <!--addresses-->
+  <div formArrayName="addresses">
+    <div *ngFor="let address of networkaccessForm.controls.addresses.controls; let i=index" class="panel panel-default">
+      <div class="panel-heading">
+        <span>Address {{i + 1}}</span>
+        <span class="glyphicon glyphicon-remove pull-right" *ngIf="networkaccessForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)"></span>
+      </div>
+      <div class="panel-body" [formGroupName]="i">
+        <div class="form-group col-xs-6">
+          <label>street</label>
+          <input type="text" class="form-control" formControlName="street">
+          <small [hidden]="networkaccessForm.controls.addresses.controls[i].controls.street.valid" class="text-danger">
+            Street is required
+          </small>
+        </div>
+        <div class="form-group col-xs-6">
+          <label>postcode</label>
+          <input type="text" class="form-control" formControlName="postcode">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-20">
+    <a (click)="addAddress()" style="cursor: default">
+      Add another address +
+    </a>
+  </div>
+
+
+</form>
+
+<p>networkaccessForm value: {{ networkaccessForm.value | json}}</p>
