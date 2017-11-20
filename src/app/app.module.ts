@@ -15,6 +15,8 @@ import {ReactFormSelectComponent} from './react-form-select/react-form-select.co
 import {ReactiveapproachComponent} from './reactiveapproach/reactiveapproach.component';
 import {RouterModule} from '@angular/router';
 import { DynamicapproachComponent } from './dynamicapproach/dynamicapproach.component';
+import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
+import {DoctorsService} from './doctors-schedule/DoctorsService';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { DynamicapproachComponent } from './dynamicapproach/dynamicapproach.comp
   declarations: [AppComponent, ShowErrorsComponent,
     NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent,
     ReactFormSelectComponent, ReactiveapproachComponent, DynamicapproachComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [DoctorsService]
 })
 export class AppModule {
 }

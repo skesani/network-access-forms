@@ -1,0 +1,19 @@
+<h1>{{welcome}}</h1>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th >#</th>
+    <th >Doctor Name</th>
+    <th >Week 1</th>
+    <th >Week 2</th>
+    <th >Week 3</th>
+    <th >Week 4</th>
+  </tr>
+  <tr *ngFor="let doc of doctorSchedule; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{doc.doctor}}</td>
+    <td>{{doc.week1.time}}</td>
+    <td>{{doc.week2.time}}</td>
+    <td>{{doc.week3.time}}</td>
+    <td>{{doc.week4.time}}</td>
+  </tr>
+</table>
