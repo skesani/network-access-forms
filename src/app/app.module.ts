@@ -17,20 +17,23 @@ import {RouterModule} from '@angular/router';
 import { DynamicapproachComponent } from './dynamicapproach/dynamicapproach.component';
 import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
 import {DoctorsService} from './doctors-schedule/DoctorsService';
+import {TabsetPillsComponent} from './tab-pills/tabset-pills';
+import {NgbModule, NgbTabsetConfig} from '@ng-bootstrap/ng-bootstrap';
+import {TabsModule} from 'ngx-tabs';
 
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpModule,
+  imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpModule, NgbModule, TabsModule,
     RouterModule.forRoot([
         { path: 'select', component: ReactFormSelectComponent},
         { path: 'doctors', component: DoctorsScheduleComponent}
     ])
   ],
-  declarations: [AppComponent, ShowErrorsComponent,
+  declarations: [AppComponent, ShowErrorsComponent, TabsetPillsComponent,
     NetworkaccessComponent, HeaderComponent, UpdatedformComponent, CuurentformComponent, DoctorsScheduleComponent,
     ReactFormSelectComponent, ReactiveapproachComponent, DynamicapproachComponent],
   bootstrap: [AppComponent],
-  providers: [DoctorsService]
+  providers: [DoctorsService, NgbTabsetConfig]
 })
 export class AppModule {
 }

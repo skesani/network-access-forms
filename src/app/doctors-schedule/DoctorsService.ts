@@ -11,12 +11,20 @@ export class DoctorsService {
   constructor(private http: Http) {
   }
 
-  public getJSON() {
-    return this.http.get('assets/doctorData.json')
+  public getJSONForRobot1() {
+    return this.http.get('assets/doctorDataRobot1.json')
       .map(res => res.json())
       .catch(this.handleError);
 
   }
+
+  public getJSONForRobot2() {
+    return this.http.get('assets/doctorDataRobot2.json')
+      .map(res => res.json())
+      .catch(this.handleError);
+
+  }
+
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred: ', error); // for demo purposes only

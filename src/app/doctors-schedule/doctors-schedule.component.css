@@ -8,7 +8,7 @@ table tr:nth-child(even) td{
 */
 
 td, tr, th{
-  color: darkblue;
-  font-family: "Comic Sans MS";
+  color: #141823;
+  font-style: italic;
   font-size: 14px;
 }
