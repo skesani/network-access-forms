@@ -10,6 +10,7 @@ import * as $ from 'jquery';
 })
 export class NetworkaccessComponent implements OnInit {
   public myForm: FormGroup;
+  empType = ['new', 'existing'];
 
   jobtitle: Jobtitle[];
 
