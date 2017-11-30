@@ -14,7 +14,11 @@
           <th >Friday </th>
         </tr>
         <tr *ngFor="let doc of doctorScheduleRobot1; let i = index">
-          <td>{{doc.week}}</td>
+          <td *ngIf="doc.week == 'Week 1'">{{doc.week}} ({{this.week1}})</td>
+          <td *ngIf="doc.week == 'Week 2'">{{doc.week}} ({{this.week2}})</td>
+          <td *ngIf="doc.week == 'Week 3'">{{doc.week}} ({{this.week3}})</td>
+          <td *ngIf="doc.week == 'Week 4'">{{doc.week}} ({{this.week4}})</td>
+          <td *ngIf="doc.week == 'Week 5'">{{doc.week}} ({{this.week5}})</td>
           <td>
             {{doc.Monday.schedule.AM.doctor}}&nbsp;(AM)
             <br/>
@@ -54,7 +58,11 @@
           <th >Friday </th>
         </tr>
         <tr *ngFor="let doc of doctorScheduleRobot2; let i = index">
-          <td>{{doc.week}}</td>
+          <td *ngIf="doc.week == 'Week 1'">{{doc.week}} ({{this.week1}})</td>
+          <td *ngIf="doc.week == 'Week 2'">{{doc.week}} ({{this.week2}})</td>
+          <td *ngIf="doc.week == 'Week 3'">{{doc.week}} ({{this.week3}})</td>
+          <td *ngIf="doc.week == 'Week 4'">{{doc.week}} ({{this.week4}})</td>
+          <td *ngIf="doc.week == 'Week 5'">{{doc.week}} ({{this.week5}})</td>
           <td>
             {{doc.Monday.schedule.AM.doctor}}&nbsp;(AM)
             <br/>
