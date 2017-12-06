@@ -6,7 +6,7 @@
     <tab title="Robot #1" style="margin: 5px;">
       <table class="table table-bordered table-striped">
         <tr>
-          <th >Week</th>
+          <th >Week/AmPm</th>
           <th >Monday</th>
           <th >Tuesday</th>
           <th >Wednesday</th>
@@ -14,7 +14,7 @@
           <th >Friday </th>
         </tr>
         <tr *ngFor="let doc of doctorScheduleRobot1; let i = index">
-          <td>{{doc.week}}</td>
+          <td style="color: red">{{doc.week}}</td>
           <td>
             {{doc.Monday.schedule.AM.doctor}}&nbsp;(AM)
             <br/>
@@ -54,7 +54,7 @@
           <th >Friday </th>
         </tr>
         <tr *ngFor="let doc of doctorScheduleRobot2; let i = index">
-          <td>{{doc.week}}</td>
+          <td style="color: red">{{doc.week}}</td>
           <td>
             {{doc.Monday.schedule.AM.doctor}}&nbsp;(AM)
             <br/>
@@ -85,7 +85,7 @@
     </tab>
   </tabset>
   <h1>Robotics Trained MDs</h1>
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped docnames">
     <tr>
       <td  *ngFor="let docs of doctors"> {{docs}} </td>
     </tr>

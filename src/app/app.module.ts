@@ -5,7 +5,6 @@ import {HttpModule} from '@angular/http';
 
 
 import {ShowErrorsComponent} from './error-components/show-errors.component';
-
 import {AppComponent} from './app.component';
 import {NetworkaccessComponent} from './networkaccess/networkaccess.component';
 import {HeaderComponent} from './header/header.component';
@@ -26,7 +25,8 @@ import {TabsModule} from 'ngx-tabs';
   imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpModule, NgbModule, TabsModule,
     RouterModule.forRoot([
         { path: 'select', component: ReactFormSelectComponent},
-        { path: 'doctors', component: DoctorsScheduleComponent}
+        { path: 'doctors', component: DoctorsScheduleComponent},
+        {path: 'network-access-form', component: ReactiveapproachComponent}
     ])
   ],
   declarations: [AppComponent, ShowErrorsComponent, TabsetPillsComponent,

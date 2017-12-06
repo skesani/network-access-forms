@@ -7,8 +7,17 @@ table tr:nth-child(even) td{
 }
 */
 
-td, tr, th{
+td, tr{
   color: #141823;
   font-style: italic;
   font-size: 14px;
+}
+
+th{
+  color: red;
+  font-style: normal;
+}
+
+.docnames tr > td {
+  color: crimson;
 }
